@@ -173,6 +173,8 @@ struct CPU
     uint8_t PS;     //Processor Status
 };
 
+typedef struct CPU CPU;
+
 enum FLAGS
 {
     C = (1 << 0),  //Processor Status Carry Flag
@@ -185,167 +187,167 @@ enum FLAGS
     N = (1 << 7),  //Processor Status Negative Flag
 };
 
-struct MEMORY;
+extern CPU cpu;
 
 /* RESETS CPU to startup state */
-void ResetCpu(struct CPU *cpu, struct MEMORY *memory);
+void ResetCpu();
 
 /* Executes the next instruction in the cycle */
-void Clock(struct CPU *cpu, struct MEMORY *memory);
+void CPUClock();
 
-void IRQ(struct CPU *cpu, struct MEMORY *memory);
+void IRQ();
 
-void NMI(struct CPU *cpu, struct MEMORY *memory);
+void NMI();
 
-uint8_t GetFlag(struct CPU *cpu, enum FLAGS f);
+uint8_t GetFlag(enum FLAGS f);
 
-void SetFlag(struct CPU *cpu, enum FLAGS f, int i);
+void SetFlag(enum FLAGS f, int i);
 
 
 
-uint8_t IMP(struct CPU *cpu);
+uint8_t IMP();
 
-uint8_t IMM(struct CPU *cpu);
+uint8_t IMM();
 
-uint8_t ZP(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ZP();
 
-uint8_t ZPX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ZPX();
 
-uint8_t ZPY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ZPY();
 
-uint8_t ABS(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ABS();
 
-uint8_t REL(struct CPU *cpu, struct MEMORY *memory);
+uint8_t REL();
 
-uint8_t ABSX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ABSX();
 
-uint8_t ABSY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ABSY();
 
-uint8_t IND(struct CPU *cpu, struct MEMORY *memory);
+uint8_t IND();
 
-uint8_t INDX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t INDX();
 
-uint8_t INDY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t INDY();
 
 
 
-uint8_t AND(struct CPU *cpu, struct MEMORY *memory);
+uint8_t AND();
 
-uint8_t BCS(struct CPU *cpu);
+uint8_t BCS();
 
-uint8_t BCC(struct CPU *cpu);
+uint8_t BCC();
 
-uint8_t BEQ(struct CPU *cpu);
+uint8_t BEQ();
 
-uint8_t BMI(struct CPU *cpu);
+uint8_t BMI();
 
-uint8_t BNE(struct CPU *cpu);
+uint8_t BNE();
 
-uint8_t BPL(struct CPU *cpu);
+uint8_t BPL();
 
-uint8_t BVC(struct CPU *cpu);
+uint8_t BVC();
 
-uint8_t BVS(struct CPU *cpu);
+uint8_t BVS();
 
-uint8_t BIT(struct CPU *cpu, struct MEMORY *memory);
+uint8_t BIT();
 
-void Branch(struct CPU *cpu);
+void Branch();
 
-uint8_t CLC(struct CPU *cpu);
+uint8_t CLC();
 
-uint8_t CLD(struct CPU *cpu);
+uint8_t CLD();
 
-uint8_t CLI(struct CPU *cpu);
+uint8_t CLI();
 
-uint8_t CLV(struct CPU *cpu);
+uint8_t CLV();
 
-uint8_t ADC(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ADC();
 
-uint8_t SBC(struct CPU *cpu, struct MEMORY *memory);
+uint8_t SBC();
 
-uint8_t PHA(struct CPU *cpu, struct MEMORY *memory);
+uint8_t PHA();
 
-uint8_t PHP(struct CPU *cpu, struct MEMORY *memory);
+uint8_t PHP();
 
-uint8_t PLA(struct CPU *cpu, struct MEMORY *memory);
+uint8_t PLA();
 
-uint8_t PLP(struct CPU *cpu, struct MEMORY *memory);
+uint8_t PLP();
 
-uint8_t ASL(struct CPU *cpu, struct MEMORY *memory, uint8_t IMP);
+uint8_t ASL(uint8_t IMP);
 
-uint8_t BRK(struct CPU *cpu, struct MEMORY *memory);
+uint8_t BRK();
 
-uint8_t CMP(struct CPU *cpu, struct MEMORY *memory);
+uint8_t CMP();
 
-uint8_t CPX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t CPX();
 
-uint8_t CPY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t CPY();
 
-uint8_t DEC(struct CPU *cpu, struct MEMORY *memory);
+uint8_t DEC();
 
-uint8_t DEX(struct CPU *cpu);
+uint8_t DEX();
 
-uint8_t DEY(struct CPU *cpu);
+uint8_t DEY();
 
-uint8_t INC(struct CPU *cpu, struct MEMORY *memory);
+uint8_t INC();
 
-uint8_t INX(struct CPU *cpu);
+uint8_t INX();
 
-uint8_t INY(struct CPU *cpu);
+uint8_t INY();
 
-uint8_t JMP(struct CPU *cpu);
+uint8_t JMP();
 
-uint8_t JSR(struct CPU *cpu, struct MEMORY *memory);
+uint8_t JSR();
 
-uint8_t LDA(struct CPU *cpu, struct MEMORY *memory);
+uint8_t LDA();
 
-uint8_t LDX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t LDX();
 
-uint8_t LDY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t LDY();
 
-uint8_t LSR(struct CPU *cpu, struct MEMORY *memory, uint8_t imp);
+uint8_t LSR(uint8_t imp);
 
-uint8_t EOR(struct CPU *cpu, struct MEMORY *memory);
+uint8_t EOR();
 
-uint8_t ORA(struct CPU *cpu, struct MEMORY *memory);
+uint8_t ORA();
 
-uint8_t ROL(struct CPU *cpu, struct MEMORY *memory, uint8_t imp);
+uint8_t ROL(uint8_t imp);
 
-uint8_t ROR(struct CPU *cpu, struct MEMORY *memory, uint8_t imp);
+uint8_t ROR(uint8_t imp);
 
-uint8_t RTI(struct CPU *cpu, struct MEMORY *memory);
+uint8_t RTI();
 
-uint8_t RTS(struct CPU *cpu, struct MEMORY *memory);
+uint8_t RTS();
 
-uint8_t SEC(struct CPU *cpu);
+uint8_t SEC();
 
-uint8_t SED(struct CPU *cpu);
+uint8_t SED();
 
-uint8_t SEI(struct CPU *cpu);
+uint8_t SEI();
 
-uint8_t STA(struct CPU *cpu, struct MEMORY *memory);
+uint8_t STA();
 
-uint8_t STX(struct CPU *cpu, struct MEMORY *memory);
+uint8_t STX();
 
-uint8_t STY(struct CPU *cpu, struct MEMORY *memory);
+uint8_t STY();
 
-uint8_t TAX(struct CPU *cpu);
+uint8_t TAX();
 
-uint8_t TAY(struct CPU *cpu);
+uint8_t TAY();
 
-uint8_t TSX(struct CPU *cpu);
+uint8_t TSX();
 
-uint8_t TXA(struct CPU *cpu);
+uint8_t TXA();
 
-uint8_t TXS(struct CPU *cpu);
+uint8_t TXS();
 
-uint8_t TYA(struct CPU *cpu);
+uint8_t TYA();
 
 uint8_t NOP();
 
 
 
 /* Fetches byte that is in the memory at where program counter is pointing to */
-uint8_t FetchByte(struct CPU *cpu, struct MEMORY *memory);
+uint8_t FetchByte();
 
 #endif

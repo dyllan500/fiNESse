@@ -1,18 +1,15 @@
 #include "include/memory.h"
 
-void InitialiseMemory(struct MEMORY *memory)
-{
-    for(__int32_t i = 0; i < MAX_MEMORY; i++)
-    {
-        memory->DATA[i] = 0x00;
-    }
-}
+MEMORY memory;
 
-/* Write 2 bytes */
-void WriteWord(__int32_t cycles, uint16_t value, __int32_t address, struct MEMORY *memory)
+void InitialiseMemory()
 {
-    memory->DATA[address] = value & 0xFF;
-    cycles --;
-    memory->DATA[address+1] = (value >> 8);
-    cycles--;
+    for(__int32_t i = 0; i < MAX_CPU_MEMORY; i++)
+    {
+        memory.CPURAM[i] = 0x00;
+    }
+    //for(__int32_t i = 0; i < MAX_PPU_MEMORY; i++)
+    //{
+     //   memory->PPURAM[i] = 0x00;
+    //}
 }
